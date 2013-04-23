@@ -32,22 +32,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = [ { id: 1, title: 'Apollo 13', director: 'Ron Howard', year: 2005 },
-                { id: 2, title: 'Star Wars', director: 'George Lucas', year: 1977 } ]
-
-    # @title = params["title"] || "Movies"
-
-    @title = params[:title] if params[:title].present?
-    @title ||= "Movies"
-    # @title = @title || "Movies"
-
-
-    # querystring_title = params["title"]
-
-    # if querystring_title.present?
-    #   @title = querystring_title
-    # end
-
+    @movies = Movie.all
   end
 
 end

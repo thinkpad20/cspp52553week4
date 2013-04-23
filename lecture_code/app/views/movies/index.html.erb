@@ -1,4 +1,4 @@
-<h1><%= @title %></h1>
+<h1>Movie Database</h1>
 
 <%= image_tag 'rails.png' %>
 <p><%= link_to "Add a New Movie", new_movie_path %></p>
@@ -17,11 +17,10 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><a href='#'><%= movie[:id] %></a></td>
-        <td><%= movie[:title] %></td>
-        <td><%= movie[:director] %></td>
-        <td><%= movie[:year] %></td>
-        <td><%= link_to "Delete", movie_url(movie[:id]), :method => :delete %>
+        <td><a href='#'><%= movie.id %></a></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.year %></td>
+        <td><%= link_to "Delete", movie_url(movie.id), :method => :delete %>
       </tr>
     <% end %>
   </tbody>
