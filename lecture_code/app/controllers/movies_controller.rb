@@ -1,38 +1,46 @@
 class MoviesController < ApplicationController
 
-  def destroy
-    # ...
-  end
-  def create
-    @movies = [ { id: 1, title: 'Apollo 13', director: 'Ron Howard', year: 2005 },
-                { id: 2, title: 'Star Wars', director: 'George Lucas', year: 1977 } ]
-
-
-    @movies.push({ :id => (@movies.size + 1),
-                         :title => params[:title],
-                         :director => params[:director],
-                         :year => params[:year]
-                       })
-    render 'index'
-  end
-  def new
-
-  end
-  def details
-    @movies = { 1 => { title: 'Apollo 13', director: 'Ron Howard', year: 2005 },
-                2 => { title: 'Star Wars', director: 'George Lucas', year: 1977 },
-                3 => { title: 'Casablanca', director: 'Me', year: 1941 },
-                 }
-
-    @movie = @movies[params[:id].to_i]
-
-    # render 'hello'
-    # render text: 'Hello'
-    # render
-  end
-
   def index
     @movies = Movie.all
   end
+
+  def show
+    @movie = Movie.find_by_id(params[:id])
+  end
+
+  def new
+
+  end
+
+  def create
+    m = Movie.new
+    m.title = params[:title]
+    m.year = params[:year]
+    m.save
+
+    redirect_to movies_url
+  end
+
+  def edit
+    @movie = Movie.find_by_id(params[:id])
+  end
+
+  def update
+    @movie = Movie.find_by_id(params[:id])
+    @movie.title = params[:title]
+    @movie.year = params[:year]
+    @movie.save
+    redirect_to movies_url
+  end
+
+  def destroy
+    m = Movie.find_by_id(params[:id])
+    m.destroy
+    redirect_to movies_url
+  end
+
+
+
+
 
 end

@@ -17,10 +17,12 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><a href='#'><%= movie.id %></a></td>
+        <td><%= link_to movie.id, movie %></td>
         <td><%= movie.title %></td>
         <td><%= movie.year %></td>
-        <td><%= link_to "Delete", movie_url(movie.id), :method => :delete %>
+        <td>
+          <%= link_to "Edit", edit_movie_path(movie) %>
+          <%= link_to "Delete", movie, :method => :delete %>
       </tr>
     <% end %>
   </tbody>
