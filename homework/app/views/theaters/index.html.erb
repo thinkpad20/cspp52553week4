@@ -1,0 +1,29 @@
+<h1>Theater Database</h1>
+
+<%= image_tag 'rails.png' %>
+<p><%= link_to "Add a New Theater", new_theater_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID Number</th>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Year</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @theaters.each do |theater| %>
+      <tr>
+        <td><%= link_to theater.id, theater %></td>
+        <td><%= theater.name %></td>
+        <td><%= theater.address %></td>
+        <td><%= theater.phone_number %></td>
+        <td>
+          <%= link_to "Edit", edit_theater_path(theater) %>
+          <%= link_to "Delete", theater, :method => :delete %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
