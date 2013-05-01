@@ -12,8 +12,8 @@ MoviesApp::Application.routes.draw do
 
   get '/theaters', controller: 'theaters', action: 'index', as: 'theaters'
   get '/theaters/new', controller: 'theaters', action: 'new', as: 'new_theater'
-  get '/theaters/:id', controller: 'theaters', action: 'show', as: 'movie'
-  get '/theaters/:id/edit', controller: 'theaters', action: 'edit', as: 'edit_movie'
+  get '/theaters/:id', controller: 'theaters', action: 'show', as: 'theater'
+  get '/theaters/:id/edit', controller: 'theaters', action: 'edit', as: 'edit_theater'
   put '/theaters/:id', controller: 'theaters', action: 'update'
   post '/theaters', controller: 'theaters', action: 'create'
   delete '/theaters/:id', controller: 'theaters', action: 'destroy'
